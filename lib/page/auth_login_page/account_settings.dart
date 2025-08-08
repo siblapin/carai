@@ -208,7 +208,16 @@ class _InfoAccountModelState extends State<InfoAccountModel> {
                   controller: _controller,
                   decoration: InputDecoration(
                     labelText: nameInfo,
-                    border: const OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderSide:
+                            const BorderSide(color: Colors.orange, width: 2),
+                        borderRadius: BorderRadius.circular(8.0)),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: const BorderSide(
+                          color: Colors.orange,
+                          width: 2.0), // Обводка при фокусе
+                    ),
                   ),
                 ),
               ],
@@ -217,14 +226,17 @@ class _InfoAccountModelState extends State<InfoAccountModel> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Отмена'),
+              child: Text('Отмена', style: TextStyle(color: Colors.red[200])),
             ),
             TextButton(
               onPressed: () {
                 widget.onUpdate(_controller.text);
                 Navigator.of(context).pop();
               },
-              child: const Text('Сохранить'),
+              child: Text(
+                'Сохранить',
+                style: TextStyle(color: buttonColor),
+              ),
             ),
           ],
         );
